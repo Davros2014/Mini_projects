@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Patatap clone</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+            rel="stylesheet"
+        />
+
+        <script
+            type="text/javascript"
+            src="assets/js/jquery-3.4.1.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="assets/paperjs-v0.12.3/dist/paper-full.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.core.min.js"
+        ></script>
+
+        <!--
+            <script type="text/paperscript" canvas="myCanvas">
+                //dimensions of grid (e.g. a 5x10 grid)
+                var rows = 5;
+                var cols = 10;
+
+                //center coordinates of any circle being drawn
+                var x;
+                var y;
+
+                //center coordinates of first circle being drawn
+                var xstart = 50;
+                var ystart = 50;
+
+                // distance between center coordinates
+                var xspacing = 100;
+                var yspacing = 100;
+
+                var radius = 10;
+                var fillColor = 'orange';
+
+                // create grid and draw circles
+                for(var row = 1; row <= rows; row++) {
+                    y = ystart + (row - 1) * yspacing;
+
+                    for(var col = 1; col <= cols; col++) {
+                        x = xstart + (col - 1) * xspacing;
+                        new Path.Circle(new Point(x, y), radius).fillColor = fillColor;
+                    }
+                }
+            </script>
+        -->
+        <!-- // circles to fill the screen -->
+        <!--
+            <script type="text/paperscript" canvas="myCanvas">
+                var screenWidth = screen.width
+                // var numberOfDivisionsX = screenWidth/100
+                var screenHeight = screen.height
+                // var numberOfDivisionsY = screenHeight/100
+                for (var x  = 5; x < screen.width; x += 25) {
+                        for (var y = 5; y < screen.height; y += 25) {
+                        new Path.Circle(new Point(x, y), 5).fillColor = "purple";
+                    }
+                }
+            </script>
+        -->
+        <!-- patatap clone -->
+        <script type="text/paperscript" canvas="myCanvas">
+
+                var keyData = {
+                    q: {
+                        sound: new Howl({
+                            src: ["assets/audio/bubbles.mp3"]
+                        }),
+                        color: "#1abc9c"
+                    },
+                    w: {
+                        sound: new Howl({
+                            src: ["assets/audio/clay.mp3"]
+                        }),
+                        color: "#2ecc71"
+                    },
+                    e: {
+                        sound: new Howl({
+                            src: ["assets/audio/confetti.mp3"]
+                        }),
+                        color: "#3498db"
+                    },
+                    r: {
+                        sound: new Howl({
+                            src: ["assets/audio/corona.mp3"]
+                        }),
+                        color: "#9b59b6"
+                    },
+                    t: {
+                        sound: new Howl({
+                            src: ["assets/audio/dotted-spiral.mp3"]
+                        }),
+                        color: "#34495e"
+                    },
+                    y: {
+                        sound: new Howl({
+                            src: ["assets/audio/flash-1.mp3"]
+                        }),
+                        color: "#16a085"
+                    },
+                    u: {
+                        sound: new Howl({
+                            src: ["assets/audio/flash-2.mp3"]
+                        }),
+                        color: "#27ae60"
+                    },
+                    i: {
+                        sound: new Howl({
+                            src: ["assets/audio/flash-3.mp3"]
+                        }),
+                        color: "#2980b9"
+                    },
+                    o: {
+                        sound: new Howl({
+                            src: ["assets/audio/glimmer.mp3"]
+                        }),
+                        color: "#8e44ad"
+                    },
+                    p: {
+                        sound: new Howl({
+                            src: ["assets/audio/moon.mp3"]
+                        }),
+                        color: "#2c3e50"
+                    },
+                    a: {
+                        sound: new Howl({
+                            src: ["assets/audio/pinwheel.mp3"]
+                        }),
+                        color: "#f1c40f"
+                    },
+                    s: {
+                        sound: new Howl({
+                            src: ["assets/audio/piston-1.mp3"]
+                        }),
+                        color: "#e67e22"
+                    },
+                    d: {
+                        sound: new Howl({
+                            src: ["assets/audio/piston-2.mp3"]
+                        }),
+                        color: "#e74c3c"
+                    },
+                    f: {
+                        sound: new Howl({
+                            src: ["assets/audio/prism-1.mp3"]
+                        }),
+                        color: "#95a5a6"
+                    },
+                    g: {
+                        sound: new Howl({
+                            src: ["assets/audio/prism-2.mp3"]
+                        }),
+                        color: "#f39c12"
+                    },
+                    h: {
+                        sound: new Howl({
+                            src: ["assets/audio/prism-3.mp3"]
+                        }),
+                        color: "#d35400"
+                    },
+                    j: {
+                        sound: new Howl({
+                            src: ["assets/audio/splits.mp3"]
+                        }),
+                        color: "#1abc9c"
+                    },
+                    k: {
+                        sound: new Howl({
+                            src: ["assets/audio/squiggle.mp3"]
+                        }),
+                        color: "#2ecc71"
+                    },
+                    l: {
+                        sound: new Howl({
+                            src: ["assets/audio/strike.mp3"]
+                        }),
+                        color: "#3498db"
+                    },
+                    z: {
+                        sound: new Howl({
+                            src: ["assets/audio/suspension.mp3"]
+                        }),
+                        color: "#9b59b6"
+                    },
+                    x: {
+                        sound: new Howl({
+                            src: ["assets/audio/timer.mp3"]
+                        }),
+                        color: "#34495e"
+                    },
+                    c: {
+                        sound: new Howl({
+                            src: ["assets/audio/ufo.mp3"]
+                        }),
+                        color: "#16a085"
+                    },
+                    v: {
+                        sound: new Howl({
+                            src: ["assets/audio/veil.mp3"]
+                        }),
+                        color: "#27ae60"
+                    },
+                    b: {
+                        sound: new Howl({
+                            src: ["assets/audio/wipe.mp3"]
+                        }),
+                        color: "#2980b9"
+                    },
+                    n: {
+                        sound: new Howl({
+                            src: ["assets/audio/zig-zag.mp3"]
+                        }),
+                        color: "#8e44ad"
+                    },
+                    m: {
+                        sound: new Howl({
+                            src: ["assets/audio/moon.mp3"]
+                        }),
+                        color: "#2c3e50"
+                    }
+                };
+
+
+
+                var circles = [];
+
+
+
+
+                var animatedCircle = new Path.Circle(new Point(300, 300), 100 );
+                function onKeyDown(event) {
+                    if (keyData[event.key]) {
+                        var maxPoint = new Point(view.size.width, view.size.height);
+                        var randomPoint = Point.random();
+                        var point = maxPoint * randomPoint;
+                        var newCircle = new Path.Circle(point, 500);
+                        newCircle.fillColor = keyData[event.key].color
+                        keyData[event.key].sound.play();
+                        console.log(maxPoint)
+                        circles.push(newCircle);
+                        // newBubbles();
+                    }
+                }
+
+
+                function onFrame(event){
+                     for(var i = 0; i < circles.length; i++){
+                        var randomNum = Math.random() * 2;
+                        circles[i].scale(randomNum);
+                        circles[i].fillColor.hue += 1;
+                        if(circles[i].area < 1){
+                	    circles[i].remove();
+                  circles.splice(i, 1);
+                  console.log(circles);
+                }
+              }
+            }
+        </script>
+    </head>
+    <body>
+        <canvas id="myCanvas" resize></canvas>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"
+        ></script>
+        <script src="assets/js/script.js"></script>
+    </body>
+</html>
