@@ -1,0 +1,122 @@
+*,
+html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+}
+#allImages {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+.images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform: translateX(100%);
+    z-index: -1;
+    object-fit: cover;
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+.images img {
+    height: 100%;
+    width: 100%;
+}
+.images.onscreen {
+    transform: translateX(0);
+    transition-property: transform;
+    transition: 1.25s all ease;
+    opacity: 1;
+    filter: grayscale(0);
+}
+.images.exit {
+    transform: translateX(-100%);
+    transition-property: transform;
+    transition: 1.25s all ease;
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+/* .kittyNav {
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
+.kittyNav a {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: 2px solid white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 0.5rem;
+    text-indent: -10000px;
+    opacity: 0.65;
+    transition: 0.2 opacity ease-in-out;
+}
+.kittyNav a:hover {
+    background: white;
+    opacity: 1;
+    transition: 0.4 all ease-in-out;
+} */
+#dots {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: 95%;
+}
+
+.dot {
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 15px;
+    height: 15px;
+    margin: 0 7px;
+    cursor: pointer;
+}
+
+.dot.on {
+    background: white;
+}
+/* resize the dots for mobile */
+
+/* .kittyNav a:nth-child(2) {
+    opacity: 1;
+} */
+
+/* @keyframes carouselContainer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+} */
+/* animation-fill-mode: forwards;
+    animation: carouselContainer;
+    transition: 0.2s all ease-in-out;
+    animation-delay: 2.4s;
+    animation-duration: 0.5454s; */
+/* animation: youAintSmilingNowBitch;
+    transition: 0.2s all ease-in-out;
+    animation-delay: 2.4s;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+}
+@keyframes youAintSmilingNowBitch {
+    0% {
+        height: 1rem;
+    }
+    100% {
+        height: 0;
+    }
+} */

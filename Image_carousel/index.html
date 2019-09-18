@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!--
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Simple carousel</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            href="https://fonts.googleapis.com/css?family=PT+Serif|Roboto"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div id="allImages">
+            <img
+                id="image1"
+                class="images onscreen"
+                src="assets/image1.jpg"
+                alt="image1"
+            />
+            <img
+                id="image2"
+                class="images"
+                src="assets/image2.jpg"
+                alt="image2"
+            />
+            <img
+                id="image3"
+                class="images"
+                src="assets/image3.jpg"
+                alt="image3"
+            />
+            <img
+                id="image4"
+                class="images"
+                src="assets/image4.jpg"
+                alt="image4"
+            />
+            <div id="dots">
+                <div data-name="0" id="dot0" class="dot on">
+                    <img src="/assets/tabasco_outline.svg" alt="" />
+                </div>
+                <div data-name="1" id="dot1" class="dot"></div>
+                <div data-name="2" id="dot2" class="dot"></div>
+                <div data-name="3" id="dot3" class="dot"></div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
