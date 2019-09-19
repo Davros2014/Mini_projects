@@ -1,6 +1,8 @@
 (function() {
     var images = document.getElementsByClassName("images"),
         dots = document.getElementsByClassName("dot"),
+        navLogo = document.getElementsByClassName("navLogo"),
+        intro = document.getElementsByClassName("intro"),
         current = 0,
         timer,
         transitionComplete = true;
@@ -17,7 +19,7 @@
             console.log(
                 "Transition complete - the current image is " + current
             );
-            timer = setTimeout(moveImages, 4000);
+            timer = setTimeout(moveImages, 5000);
             transitionComplete = false;
         }
     });
@@ -46,6 +48,8 @@
         images[current].classList.remove("onscreen");
         // removes onscreen class to current image class
         dots[current].classList.remove("on");
+        navLogo[current].classList.remove("on");
+        intro[current].classList.remove("animate");
         // removes on class from current dot class
         images[current].classList.add("exit");
         // add exit class to current image
@@ -62,6 +66,8 @@
             current = next;
         }
         dots[current].classList.add("on");
+        navLogo[current].classList.add("on");
+        intro[current].classList.add("animate");
         // adds on class to the next dot class
         images[current].classList.add("onscreen");
         console.log("The next image is " + current);
