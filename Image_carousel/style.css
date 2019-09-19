@@ -50,9 +50,44 @@ html {
 
 .title {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    left: 110%;
+    opacity: 0;
+    top: 10rem;
+    font-size: 7rem;
+    font-family: "Montserrat";
+    color: rgba(185, 12, 32, 1);
+    line-height: 0.95;
+    transition: 1.25s all ease;
+}
+
+.title span {
+    font-size: 9rem;
+}
+.textAnimate {
+    left: 10rem;
+    opacity: 1;
+}
+.fade {
+    left: 10rem;
+    opacity: 0.5;
+}
+.description {
+    width: 25vw;
+    font-size: 2rem;
+    color: rgba(47, 12, 9, 1);
+    position: absolute;
+    left: 10rem;
+    top: 60rem;
+    opacity: 0;
+    transition: 1.25s all ease;
+    font-family: "Montserrat";
+}
+.description.textAnimateUp {
+    top: 27rem;
+    opacity: 1;
+}
+.whiteText {
+    color: #e9e9e9;
 }
 
 /* ============== NAVIGATION ============== */

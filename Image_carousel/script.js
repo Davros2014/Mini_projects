@@ -2,7 +2,8 @@
     var images = document.getElementsByClassName("images"),
         dots = document.getElementsByClassName("dot"),
         navLogo = document.getElementsByClassName("navLogo"),
-        intro = document.getElementsByClassName("intro"),
+        title = document.getElementsByClassName("title"),
+        description = document.getElementsByClassName("description"),
         current = 0,
         timer,
         transitionComplete = true;
@@ -49,7 +50,9 @@
         // removes onscreen class to current image class
         dots[current].classList.remove("on");
         navLogo[current].classList.remove("on");
-        intro[current].classList.remove("animate");
+        images[current].classList.remove("intro");
+        title[current].classList.remove("textAnimate");
+        description[current].classList.remove("textAnimateUp");
         // removes on class from current dot class
         images[current].classList.add("exit");
         // add exit class to current image
@@ -65,9 +68,11 @@
         if (next >= 0) {
             current = next;
         }
+        description[current].classList.add("textAnimateUp");
+        title[current].classList.add("textAnimate");
         dots[current].classList.add("on");
         navLogo[current].classList.add("on");
-        intro[current].classList.add("animate");
+
         // adds on class to the next dot class
         images[current].classList.add("onscreen");
         console.log("The next image is " + current);
