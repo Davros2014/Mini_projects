@@ -55,7 +55,7 @@ html {
     top: 10rem;
     font-size: 7rem;
     font-family: "Montserrat";
-    color: rgba(185, 12, 32, 1);
+    color: rgba(159, 39, 22, 1);
     line-height: 0.95;
     transition: 1.25s all ease;
 }
@@ -81,6 +81,8 @@ html {
     opacity: 0;
     transition: 1.25s all ease;
     font-family: "Montserrat";
+    padding-left: 2rem;
+    border-left: 2px solid rgba(47, 12, 9, 1);
 }
 .description.textAnimateUp {
     top: 27rem;
@@ -88,6 +90,11 @@ html {
 }
 .whiteText {
     color: #e9e9e9;
+    border-left: 2px solid #e9e9e9;
+}
+
+.greenText {
+    color: rgba(109, 244, 27, 1);
 }
 
 /* ============== NAVIGATION ============== */
@@ -108,6 +115,7 @@ html {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
 }
 .dot {
     padding: 2rem 0;
@@ -115,13 +123,13 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(270, 270, 270, 0.15);
     transition: 1.25 all ease-in-out;
 }
 .dot.on {
     transition: 0.25 all ease-in-out;
     background: rgba(255, 99, 71, 0.5);
-    border-bottom: 5px solid tomato;
+    border-bottom: 3px solid rgba(47, 12, 9, 1);
 }
 .navLogo {
     height: 2.5rem;
@@ -151,15 +159,11 @@ html {
     animation-duration: 0.5s;
     width: 100vw;
     height: 100vh;
-    /* transform: rotate(90deg); */
 }
-
 .intro .animate {
     animation-name: scale;
     animation-duration: 0.5s;
-    /* transform: rotate(90deg); */
 }
-
 @keyframes scale {
     0% {
         transform: scale(2);
