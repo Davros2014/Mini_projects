@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <title>Spotify_search</title>
+    </head>
+    <body>
+        <div class="searchContainer">
+            <div class="headerContainer">
+                <h1 id="header"><img id="logoHeader" src="assets/spotify-logo-white.svg" alt="Spotify Logo"/>Spotify search</h1>
+            </div>
+            <!-- search area -->
+            <div class="selectContainer">
+                <input type="text" placeholder="Enter search" name="user-input">
+                <select class="artist-or-album">
+                    <option value=""> Select an option </option>
+                    <option id="artist">Artist</option>
+                    <option id="album">Album</option>
+
+                </select>
+                <button class="submit-button">Submit</button>
+                <input type="button" value="Clear" onClick="window.location.reload()">
+            </div>
+        </div>
+
+    <!-- search output -->
+        <div id="results"></div>
+        <div id="more">MORE</div>
+
+    <!-- search output -->
+        <footer id="footer">
+            <img id="logoFooter" src="assets/spotify-logo-white.svg" alt="Spotify Icon"/>
+            <p>Spotify 2019</p>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="script.js"></script>
+        <!-- <script src="infinite.js"></script> -->
+    </body>
+</html>
