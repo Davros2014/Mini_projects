@@ -1,7 +1,9 @@
 (function() {
     var results = $("#results"),
         nextUrl,
-        next = $("#more");
+        next = $("#more"),
+        fade = $(".fade"),
+        backgroundContainer = $(".backgroundContainer");
     if (!nextUrl) {
         next.hide();
     }
@@ -28,6 +30,7 @@
                         "https://api.spotify.com/v1/search",
                         "https://elegant-croissant.glitch.me/spotify"
                     );
+                backgroundContainer.addClass("fade");
                 next.show();
 
                 next.on("click", function() {
@@ -51,6 +54,7 @@
                                 var output = "";
                                 for (var j = 0; j < payload.items.length; j++) {
                                     var img;
+
                                     if (payload.items[j].images.length > 0) {
                                         img =
                                             '<img src="' +
@@ -58,7 +62,7 @@
                                             '" alt="">';
                                     } else
                                         img =
-                                            '<img src="assets/spotify.jpg" alt="">';
+                                            '<img src="assets/spotify-logo.svg" alt="">';
 
                                     output += '<div class="output">';
 
@@ -77,11 +81,26 @@
                                         output +=
                                             '<p class="release">' +
                                             "Release date: " +
-                                            payload.items[j].release_date +
+                                            new Date(
+                                                payload.items[j].release_date
+                                            ).toLocaleDateString() +
                                             "</p>" +
                                             '<p class="trackNum">' +
                                             "Number of tracks: " +
                                             payload.items[j].total_tracks +
+                                            "</p>";
+                                    } else if (
+                                        payload.items[j].genres.length === 0
+                                    ) {
+                                        output +=
+                                            '<p class="genres">' +
+                                            "Genre: Not defined" +
+                                            "</p>" +
+                                            '<p class="trackNum">' +
+                                            "Number of followers: " +
+                                            Number(
+                                                payload.items[j].followers.total
+                                            ) +
                                             "</p>";
                                     } else
                                         output +=
@@ -113,7 +132,14 @@
                     return;
                 }
                 if (payload && payload.items.length) {
-                    var output = "";
+                    var total = payload.total;
+                    var output =
+                        '<div class="resultTotal">' +
+                        "Your search found " +
+                        "<span>" +
+                        total +
+                        "</span>" +
+                        " results </div>";
                     for (var j = 0; j < payload.items.length; j++) {
                         var img;
                         if (payload.items[j].images.length > 0) {
@@ -140,7 +166,9 @@
                             output +=
                                 '<p class="release">' +
                                 "Release date: " +
-                                payload.items[j].release_date +
+                                new Date(
+                                    payload.items[j].release_date
+                                ).toLocaleDateString() +
                                 "</p>" +
                                 '<p class="trackNum">' +
                                 "Number of tracks: " +
@@ -154,7 +182,9 @@
                                 "</p>" +
                                 '<p class="trackNum">' +
                                 "Number of followers: " +
-                                Number(payload.items[j].followers.total) +
+                                Number(
+                                    payload.items[j].followers.total
+                                ).toLocaleString() +
                                 "</p>";
 
                         output += "</div>";
