@@ -115,9 +115,7 @@
                                             ) +
                                             "</p>";
 
-                                    output += "</div>";
-
-                                    output += "</div>";
+                                    output += "</div>" + "</div>";
                                 }
                             } else
                                 output =
@@ -147,7 +145,7 @@
                                 '<img src="' +
                                 payload.items[j].images[0].url +
                                 '" alt="">';
-                        } else img = '<img src="assets/spotify.jpg" alt="">';
+                        } else img = '<img src="assets/spotify-logo" alt="">';
 
                         output += '<div class="output">';
 
@@ -174,17 +172,25 @@
                                 "Number of tracks: " +
                                 payload.items[j].total_tracks +
                                 "</p>";
+                        } else if (payload.items[j].genres.length === 0) {
+                            output +=
+                                '<p class="genres">' +
+                                "Genre: Not defined" +
+                                "</p>" +
+                                '<p class="trackNum">' +
+                                "Number of followers: " +
+                                Number(payload.items[j].followers.total) +
+                                "</p>";
                         } else
                             output +=
                                 '<p class="genres">' +
                                 "Genre: " +
                                 payload.items[j].genres +
+                                " " +
                                 "</p>" +
                                 '<p class="trackNum">' +
                                 "Number of followers: " +
-                                Number(
-                                    payload.items[j].followers.total
-                                ).toLocaleString() +
+                                Number(payload.items[j].followers.total) +
                                 "</p>";
 
                         output += "</div>";

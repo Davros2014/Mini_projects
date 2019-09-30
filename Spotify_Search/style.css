@@ -16,9 +16,10 @@ body {
 }
 /* colors */
 :root {
-    --main-bg-color: coral;
+    --main-bg-color: rgba(210, 150, 122, 1);
     /* --primary-color: rgba(88, 24, 69, 1); */
     --primary-color: rgba(54, 15, 50, 1);
+    --primary-color-75: rgba(54, 15, 50, 0.75);
     --secondary-color: rgba(235, 230, 220, 1);
     --secondary-color-50: rgba(234, 225, 208, 0.5);
     --accent-color: rgba(88, 24, 69, 0.25);
@@ -77,6 +78,7 @@ button:focus {
     outline: 0;
 }
 .searchContainer {
+    position: relative;
     background: var(--accent-color);
     color: #e9e9e9;
 }
@@ -84,14 +86,19 @@ button:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--third-color-50);
+    background: var(--main-bg-color);
     width: 100vw;
-    height: 12vh;
+    height: calc(7vh + 5rem);
+}
+.logoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 #header {
     font-family: "Montserrat", sans-serif;
     color: #1f5a80;
-    font-size: calc(1rem + 2vw);
+    font-size: calc(1.25rem + 2.25vw);
     text-align: center;
     margin: 0 auto;
     padding: 4rem 0;
@@ -102,26 +109,6 @@ button:focus {
     background: var(--transparent);
 }
 
-.backgroundContainer {
-    background: var(--primary-color);
-    color: var(--primary-color);
-    font-size: calc(1.5rem + 3vw);
-    width: 100vw;
-    height: 81vh;
-    margin: auto 0;
-    margin-top: 19vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    opacity: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.background::after {
-    background: var(--secondary-color);
-}
 .resultTotal {
     color: var(--primary-color);
     text-transform: uppercase;
@@ -136,22 +123,62 @@ button:focus {
     padding: 0.25rem 0.75rem;
     font-size: 2rem;
 }
+
+.backgroundContainer {
+    color: var(--primary-color);
+    font-size: calc(1.5rem + 3vw);
+    width: 100vw;
+    height: 81vh;
+    margin: auto 0;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .fade {
     transition: 0.25s all ease-in-out;
     opacity: 0;
 }
-#titleIntro {
-    padding: 1rem;
-    background: var(--secondary-color);
-    font-family: "Montserrat", sans-serif;
-    font-size: 3rem;
+.backgroundWrapper {
+    position: relative;
+    background: url("assets/spotify-bg.png");
+    background-size: cover;
+    background-position: center center;
+    width: 75vw;
+    height: 81vh;
+    margin: auto;
 }
+
+/* title text effect */
+.titleContainer {
+    position: absolute;
+    left: 10vw;
+    top: 20vh;
+}
+#titleIntro {
+    max-width: 10em;
+    margin: 0 auto;
+    line-height: calc(4.5rem + 0.5vw);
+}
+.titleContainer span {
+    display: inline;
+    position: relative;
+    padding: calc(0.25rem + 0.25vw) 0;
+    font-size: calc(2.75rem + 0.25vw);
+    color: white;
+    background: var(--primary-color-75);
+    box-shadow: 10px 0 0 var(--primary-color-75),
+        -10px 0 0 var(--primary-color-75);
+}
+
 #logoHeader {
-    width: calc(1.5rem + 2vw);
+    width: calc(2.5rem + 2vw);
     padding: 0;
     margin: 0;
     padding-right: 1rem;
-    margin-top: 1rem;
     align-content: center;
     filter: drop-shadow(1px 1px 1px var(--primary-color));
 }
@@ -205,6 +232,7 @@ button:focus {
     width: calc(5rem + 10vw);
     height: calc(5rem + 10vw);
     border-radius: 5px;
+    background: #fff;
 }
 .output {
     width: 75vw;
@@ -333,3 +361,10 @@ button:focus {
 }
 
 /* new css for select boxes  */
+
+/* media queries */
+@media all and (max-width: 980px) {
+    .backgroundWrapper {
+        width: 100vw;
+    }
+}
