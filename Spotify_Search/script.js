@@ -2,7 +2,6 @@
     var results = $("#results"),
         nextUrl,
         next = $("#more"),
-        fade = $(".fade"),
         backgroundContainer = $(".backgroundContainer");
     if (!nextUrl) {
         next.hide();
@@ -23,6 +22,87 @@
             },
             success: function(payload) {
                 // success function runs once we have heard a response from the API
+
+                function search() {
+                    console.log("show if success, payload is", payload);
+                    if (userInput != $('input[name="user-input"]').val()) {
+                        return;
+                    }
+                    if (payload && payload.items.length) {
+                        var total = payload.total;
+                        var output =
+                            '<div class="resultTotal">' +
+                            "Your search found " +
+                            "<span>" +
+                            total +
+                            "</span>" +
+                            " results </div>";
+                        for (var j = 0; j < payload.items.length; j++) {
+                            var img;
+                            if (payload.items[j].images.length > 0) {
+                                img =
+                                    '<img src="' +
+                                    payload.items[j].images[0].url +
+                                    '" alt="">';
+                            } else
+                                img =
+                                    '<img  class="spotifyLogo" src="assets/spotify-logo" alt="">';
+
+                            output += '<div class="output">';
+
+                            output += img;
+
+                            output += '<div class="infoContainer">';
+                            output +=
+                                '<a class="album_artist" href="' +
+                                payload.items[j].external_urls.spotify +
+                                '">' +
+                                selection +
+                                ": " +
+                                payload.items[j].name +
+                                "</a>";
+                            if (selection === "ALBUM") {
+                                output +=
+                                    '<p class="release">' +
+                                    "Release date: " +
+                                    new Date(
+                                        payload.items[j].release_date
+                                    ).toLocaleDateString() +
+                                    "</p>" +
+                                    '<p class="trackNum">' +
+                                    "Number of tracks: " +
+                                    payload.items[j].total_tracks +
+                                    "</p>";
+                            } else if (payload.items[j].genres.length === 0) {
+                                output +=
+                                    '<p class="genres">' +
+                                    "Genre: Not defined" +
+                                    "</p>" +
+                                    '<p class="trackNum">' +
+                                    "Number of followers: " +
+                                    Number(payload.items[j].followers.total) +
+                                    "</p>";
+                            } else
+                                output +=
+                                    '<p class="genres">' +
+                                    "Genre: " +
+                                    payload.items[j].genres +
+                                    " " +
+                                    "</p>" +
+                                    '<p class="trackNum">' +
+                                    "Number of followers: " +
+                                    Number(payload.items[j].followers.total) +
+                                    "</p>";
+
+                            output += "</div>" + "</div>";
+                        }
+                    } else
+                        output =
+                            '<div class="noresults"> No results found, please try again </div>';
+
+                    results.append(output).show();
+                }
+
                 payload = payload.artists || payload.albums;
                 nextUrl =
                     payload.next &&
@@ -43,7 +123,6 @@
                             type: dropdown // represents dropdown chosen by user
                         },
                         success: function(payload) {
-                            console.log("show if success, payload is", payload);
                             payload = payload.artists || payload.albums;
                             if (
                                 userInput != $('input[name="user-input"]').val()
@@ -62,7 +141,7 @@
                                             '" alt="">';
                                     } else
                                         img =
-                                            '<img src="assets/spotify-logo.svg" alt="">';
+                                            '<img class="spotifyLogo" src="assets/spotify-logo.svg" alt="">';
 
                                     output += '<div class="output">';
 
@@ -126,82 +205,8 @@
                 });
 
                 // search artists/album info
-                if (userInput != $('input[name="user-input"]').val()) {
-                    return;
-                }
-                if (payload && payload.items.length) {
-                    var total = payload.total;
-                    var output =
-                        '<div class="resultTotal">' +
-                        "Your search found " +
-                        "<span>" +
-                        total +
-                        "</span>" +
-                        " results </div>";
-                    for (var j = 0; j < payload.items.length; j++) {
-                        var img;
-                        if (payload.items[j].images.length > 0) {
-                            img =
-                                '<img src="' +
-                                payload.items[j].images[0].url +
-                                '" alt="">';
-                        } else img = '<img src="assets/spotify-logo" alt="">';
 
-                        output += '<div class="output">';
-
-                        output += img;
-
-                        output += '<div class="infoContainer">';
-                        output +=
-                            '<a class="album_artist" href="' +
-                            payload.items[j].external_urls.spotify +
-                            '">' +
-                            selection +
-                            ": " +
-                            payload.items[j].name +
-                            "</a>";
-                        if (selection === "ALBUM") {
-                            output +=
-                                '<p class="release">' +
-                                "Release date: " +
-                                new Date(
-                                    payload.items[j].release_date
-                                ).toLocaleDateString() +
-                                "</p>" +
-                                '<p class="trackNum">' +
-                                "Number of tracks: " +
-                                payload.items[j].total_tracks +
-                                "</p>";
-                        } else if (payload.items[j].genres.length === 0) {
-                            output +=
-                                '<p class="genres">' +
-                                "Genre: Not defined" +
-                                "</p>" +
-                                '<p class="trackNum">' +
-                                "Number of followers: " +
-                                Number(payload.items[j].followers.total) +
-                                "</p>";
-                        } else
-                            output +=
-                                '<p class="genres">' +
-                                "Genre: " +
-                                payload.items[j].genres +
-                                " " +
-                                "</p>" +
-                                '<p class="trackNum">' +
-                                "Number of followers: " +
-                                Number(payload.items[j].followers.total) +
-                                "</p>";
-
-                        output += "</div>";
-
-                        output += "</div>";
-                    }
-                } else
-                    output =
-                        '<div class="noresults"> No results found, please try again </div>';
-
-                results.append(output).show();
+                search();
             }
         });
     });
