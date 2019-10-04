@@ -140,7 +140,6 @@ button:focus {
     padding: 0.25rem 0.75rem;
     font-size: 2rem;
 }
-
 .backgroundContainer {
     color: var(--primary-color);
     font-size: calc(1.5rem + 3vw);
@@ -253,6 +252,23 @@ button:focus {
     background: #fff;
     box-shadow: 1px 1px 3px var(--accent-color);
 }
+.grow {
+    width: calc(15rem + 10vw);
+    height: calc(15rem + 10vw);
+    position: relative;
+}
+.grow::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: red;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 5;
+}
 .spotifyLogo {
     padding: 3rem;
 }
@@ -309,7 +325,7 @@ button:focus {
     transition: 0.25s all ease-in-out;
 }
 .infoContainer:hover {
-    transition: 0.25s all ease-in-out;
+    /* transition: 0.25s all ease-in-out; */
     padding-left: 2rem;
     border-left: 7px solid var(--secondary-color);
 }
@@ -318,12 +334,14 @@ button:focus {
     color: var(--primary-color);
 }
 
-.release {
+.release,
+.genres {
     margin-top: 0.5rem;
     padding-top: 1rem;
     border-top: 1px solid var(--primary-color);
 }
-.output:hover > .infoContainer > .release {
+.output:hover > .infoContainer > .release,
+.output:hover > .infoContainer > .genres {
     border-top: 1px solid var(--secondary-color);
 }
 /* more button - appears at page bottom after artist/image info loads */

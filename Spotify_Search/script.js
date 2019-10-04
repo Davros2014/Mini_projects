@@ -3,9 +3,11 @@
         nextUrl,
         next = $("#more"),
         backgroundContainer = $(".backgroundContainer");
+    // image = $(".payloadImage");
     if (!nextUrl) {
         next.hide();
     }
+
     $(".submit-button").on("click", function() {
         var userInput = $('input[name="user-input"]').val(); // targets input from the user
         var dropdown = $(".artist-or-album")
@@ -41,7 +43,7 @@
                             var img;
                             if (payload.items[j].images.length > 0) {
                                 img =
-                                    '<img src="' +
+                                    '<img class="payloadImage" src="' +
                                     payload.items[j].images[0].url +
                                     '" alt="">';
                             } else
@@ -136,7 +138,7 @@
 
                                     if (payload.items[j].images.length > 0) {
                                         img =
-                                            '<img src="' +
+                                            '<img class="payloadImage" src="' +
                                             payload.items[j].images[0].url +
                                             '" alt="">';
                                     } else
@@ -205,8 +207,11 @@
                 });
 
                 // search artists/album info
-
                 search();
+                // $(".output").on("click", function() {
+                //     console.log("clicking the image here");
+                //     image.append(grow).show();
+                // });
             }
         });
     });
