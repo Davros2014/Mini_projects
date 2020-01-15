@@ -61,25 +61,15 @@
         function getRandomNumber(num) {
             return Math.floor(Math.random() * num);
         }
-        function backgroundColorChange() {
-            var r = getRandomNumber(256);
-            var g = getRandomNumber(256);
-            var b = getRandomNumber(256);
+        let colorChange = () => {
+            var r = getRandomNumber(256),
+                g = getRandomNumber(256),
+                b = getRandomNumber(256);
             var randomColor = "rgb(" + r + "," + g + "," + b + ")";
             return randomColor;
-        }
-        function colorChange() {
-            var r = getRandomNumber(256);
-            var g = getRandomNumber(256);
-            var b = getRandomNumber(256);
-            var randomColor = "rgb(" + r + "," + g + "," + b + ")";
-            return randomColor;
-        }
-        // backgroundColorChange();
-        // colorChange();
-        var newBackgroundColor = backgroundColorChange();
+        };
+        var newBackgroundColor = colorChange();
         var newColor = colorChange();
-
         localStorage.setItem("backgroundColor", newBackgroundColor);
         localStorage.setItem("color", newColor);
         transition;
