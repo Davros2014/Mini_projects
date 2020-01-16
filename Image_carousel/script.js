@@ -16,10 +16,7 @@
         // webkitTransitionEnd for Safari 3.1 to 6.0
         if (e.target.classList.contains("exit")) {
             e.target.classList.remove("exit");
-
-            console.log(
-                "Transition complete - the current image is " + current
-            );
+            console.log("Transition complete - the current image is ", current);
             timer = setTimeout(moveImages, 5000);
             transitionComplete = false;
         }
@@ -59,7 +56,7 @@
 
         transitionComplete = true;
 
-        current++; // current start at zero > 1 is added on each pass through
+        current++; // current start at zero, 1 is added on each pass through
         if (current >= images.length) {
             // resets image number back to zero if current exceeds number of images!
             current = 0;
@@ -75,7 +72,7 @@
 
         // adds on class to the next dot class
         images[current].classList.add("onscreen");
-        console.log("The next image is " + current);
+        console.log("The next image is ", current);
         // adds onscreen class to the next one
     }
 })(); // end iife
