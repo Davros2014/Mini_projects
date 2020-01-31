@@ -237,12 +237,8 @@
 
 
                 var circles = [];
-
-
-
-
                 var animatedCircle = new Path.Circle(new Point(300, 300), 100 );
-                function onKeyDown(event) {
+                function effect1() {
                     if (keyData[event.key]) {
                         var maxPoint = new Point(view.size.width, view.size.height);
                         var randomPoint = Point.random();
@@ -254,6 +250,9 @@
                         circles.push(newCircle);
                         // newBubbles();
                     }
+                }
+                function onKeyDown(event) {
+                    effect1();
                 }
 
 

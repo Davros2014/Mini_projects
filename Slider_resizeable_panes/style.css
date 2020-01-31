@@ -72,3 +72,7 @@ img {
 .bar2:hover {
     cursor: pointer;
 }
+.artist-or-album {
+    border-radius: 0 !important;
+    height: 2.8rem;
+}

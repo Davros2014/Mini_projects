@@ -209,7 +209,7 @@ button:focus {
     /* margin-top: 1rem; */
 }
 
-/* =================== nnew select drop down =================== */
+/* =================== new select drop down =================== */
 .artist-or-album {
     background: var(--secondary-color-50);
     color: var(--secondary-color);
@@ -221,7 +221,10 @@ button:focus {
     -webkit-appearance: button;
     appearance: button;
     outline: none;
-    border-radius: 0;
+    border-radius: 0 !important;
+    height: 2.8rem;
+    -webkit-appearance: none;
+    -webkit-border-radius: 2px;
 }
 .option {
     outline: none;

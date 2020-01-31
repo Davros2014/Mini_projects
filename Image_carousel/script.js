@@ -46,6 +46,7 @@
         images[current].classList.remove("onscreen");
         // removes onscreen class to current image class
         dots[current].classList.remove("on");
+        // dots[current - 1].classList.add("off");
         navLogo[current].classList.remove("on");
         images[current].classList.remove("intro");
         title[current].classList.remove("textAnimate");
